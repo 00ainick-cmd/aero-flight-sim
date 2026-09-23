@@ -1,6 +1,7 @@
-import { defineConfig } from 'vite';
+﻿import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: '/aero-flight-sim/',
   server: {
     host: '0.0.0.0',
     port: 47231,
