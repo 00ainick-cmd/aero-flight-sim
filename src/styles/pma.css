@@ -1,0 +1,87 @@
+.pma {
+  width: 600px;
+  height: 128px;
+  display: grid;
+  grid-template-columns: 70px 1fr 116px;
+  border-radius: 8px;
+  --dim: 0.8;
+}
+.pma-left { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+.mkr { display: flex; gap: 5px; }
+.mkr-lamp {
+  width: 16px; height: 16px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 8px; font-weight: 700; color: rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 0 0 1px #000, 0 1px 1px rgba(255, 255, 255, 0.06);
+}
+.mkr-lamp.o { background: #10183a; }
+.mkr-lamp.m { background: #3a2a06; }
+.mkr-lamp.i { background: #2a2a2a; }
+.mkr-lamp.o.on { background: #3f7bff; box-shadow: 0 0 10px #3f7bff; }
+.mkr-lamp.m.on { background: #ffb000; box-shadow: 0 0 10px #ffb000; }
+.mkr-lamp.i.on { background: #fff; box-shadow: 0 0 10px #fff; }
+.usb { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 7px; color: #8d939b; letter-spacing: 0.1em; }
+.usb i { width: 20px; height: 8px; background: #050506; border-radius: 1px; box-shadow: 0 0 0 1px #3b3e43; }
+
+.pma-mid { display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 0 4px; }
+.pma-row { display: flex; gap: 5px; justify-content: center; align-items: stretch; }
+.pma-btn {
+  width: 46px;
+  height: 42px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #2c2e32, #17181b);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 0 0 1px #000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  line-height: 1.05;
+  position: relative;
+  transition: transform 0.05s;
+}
+.pma-btn .led {
+  position: absolute;
+  top: 4px; left: 50%;
+  width: 18px; height: 3px;
+  margin-left: -9px;
+  border-radius: 2px;
+  background: #0d1a10;
+}
+.pma-btn .l1 { font-size: 10px; font-weight: 700; color: #585c62; margin-top: 5px; letter-spacing: 0.03em; }
+.pma-btn .l2 { font-size: 8px; font-weight: 700; color: #585c62; }
+.pma.powered .pma-btn .l1, .pma.powered .pma-btn .l2 { color: rgba(235, 244, 238, var(--dim)); }
+.pma-btn.lit .led { background: #3dff8a; box-shadow: 0 0 6px #3dff8a; }
+.pma-btn.lit .l1, .pma-btn.lit .l2 { color: #7dffae !important; text-shadow: 0 0 5px rgba(61, 255, 138, 0.6); }
+.pma-btn.pressed { transform: translateY(1px); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 1px 3px rgba(0, 0, 0, 0.7); }
+
+.ics-leds { display: flex; flex-direction: column; justify-content: center; gap: 2px; width: 38px; }
+.ics-leds span { font-size: 8px; font-weight: 700; color: #4d5157; display: flex; align-items: center; gap: 4px; }
+.ics-leds span::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #0d1a10; box-shadow: inset 0 0 0 1px #000; }
+.ics-leds span.on { color: #7dffae; }
+.ics-leds span.on::before { background: #3dff8a; box-shadow: 0 0 5px #3dff8a; }
+
+.pma-right { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; position: relative; }
+.pma-brand { font-size: 7px; letter-spacing: 0.14em; color: #9ba1a9; text-align: center; line-height: 1.2; margin-bottom: 2px; }
+.pma-brand b { display: block; font-size: 11px; color: #e9ecef; letter-spacing: 0.1em; }
+.pma-pwr { font-size: 7px; color: #8d939b; letter-spacing: 0.1em; }
+.pma-vol { width: 70px; display: flex; flex-direction: column; gap: 2px; }
+.pma-vol i { display: block; height: 2px; background: #3dff8a; opacity: 0; }
+.pma.powered .pma-vol i { opacity: 0.8; }
+.pma-bt { position: absolute; right: 10px; top: 10px; font-size: 11px; color: #1b2a44; }
+.pma-bt.on { color: #3f7bff; text-shadow: 0 0 6px #3f7bff; }
+
+.pma-failsafe {
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #000;
+  background: var(--warn);
+  padding: 2px 8px;
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.pma-failsafe.show { opacity: 1; }
